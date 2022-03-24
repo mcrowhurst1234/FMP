@@ -60,3 +60,8 @@ crashlytics-build.properties
 
 *.json
 .collabignore
+ProjectSettings/boot.config
+ProjectSettings/MemorySettings.asset
+ProjectSettings/ProjectVersion.txt
+ProjectSettings/ProjectVersion.txt
+*.txt
