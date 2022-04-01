@@ -27,7 +27,7 @@ public class Inventory
             {
                 if(ItemStack.areItemsEqual(input, stack))
                 {
-                    if(stack.canAddToo(input.get)))
+                    if(stack.canAddToo(input.getCount()))
                     {
                         stack.increaseAmount(input.getCount());
                         return true;
@@ -35,9 +35,25 @@ public class Inventory
                     else
                     {
                         int difference = (stack.getCount() + input.getCount()) - stack.getItem().maxStackSize;
+                        stack.setCount(stack.getItem().maxStackSize);
+                        input.setCount(difference);
                     }
                 }
             }
         }
+
+        return false;
     }
+
+    public ItemStack getStackInSlot(int index) 
+    {
+        return inventoryContents[index]; 
+    }
+
+    public List<ItemStack> getInventoryStacks()
+    {
+        return inventoryContents; 
+    }
+    
+
 }
