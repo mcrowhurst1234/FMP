@@ -72,6 +72,11 @@ public class ItemStack
         this.count = amount;
     }
 
+    public bool canAddToo(int amount)
+    {
+        return (this.count + amount) <= this.item.maxStackSize;
+    }
+
     public ItemStack splitStack(int amount)
     {
         int i = Mathf.Min(amount, count);
