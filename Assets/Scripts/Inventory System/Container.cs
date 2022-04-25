@@ -2,17 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Container : MonoBehaviour
+public class Container 
 {
-    // Start is called before the first frame update
-    void Start()
+    private GameObject spawnedContainerPrefab;
+    private Inventory containerInventory;
+    private Inventory playerInventory; 
+
+    public Container(Inventory containerInventory, Inventory playerInventory)
     {
-        
+        this.containerInventory = containerInventory;
+        this.playerInventory = playerInventory;
+    } 
+
+    public void openContainer()
+    {
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void closeContainer()
     {
-        
+
+    }
+
+    public virtual GameObject getContainerPrefab()
+    {
+        return null; 
+    }
+
+    public GameObject getSpawnedContainer()
+    {
+        return spawnedContainerPrefab; 
+    }
+
+    public Inventory getContainerInventory()
+    {
+        return containerInventory; 
+    }
+
+    public Inventory getPlayerInventory()
+    {
+        return playerInventory; 
     }
 }
