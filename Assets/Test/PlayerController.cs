@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
 
     float forwardMovement, sideMovement, rotationDeltaY, rotationDeltaX, rotX, rotY;
 
+    private bool isOpen;
+
+
     
     // Start is called before the first frame update
     void Start()
@@ -25,6 +28,26 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+      if(Input.GetKeyDown(KeyCode.E))
+            {
+                if(!isOpen)
+                {
+                    InventoryManager.INSTANCE.openContainer(new ContainerPlayerInventory(null, null));
+                    isOpen = true;
+                }
+                else 
+                {
+                    InventoryManager.INSTANCE.closeContainer(); 
+                    isOpen = false; 
+                }
+            }
+
+
+
+
+
+
         forwardMovement = Input.GetAxis("Vertical");
         sideMovement = Input.GetAxis("Horizontal");
         rotationDeltaY = Input.GetAxis("Mouse Y");

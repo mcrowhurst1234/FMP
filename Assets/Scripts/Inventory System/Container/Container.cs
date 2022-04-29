@@ -12,16 +12,19 @@ public class Container
     {
         this.containerInventory = containerInventory;
         this.playerInventory = playerInventory;
+        openContainer();
     } 
+
+   
 
     public void openContainer()
     {
-
+        spawnedContainerPrefab = Object.Instantiate(getContainerPrefab(), InventoryManager.INSTANCE.transform);
     }
 
     public void closeContainer()
     {
-
+        Object.Destroy(spawnedContainerPrefab);
     }
 
     public virtual GameObject getContainerPrefab()
