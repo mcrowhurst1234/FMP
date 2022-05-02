@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
 
       if(Input.GetKeyDown(KeyCode.E))
-            {
+      {
                 if(!isOpen)
                 {
                     InventoryManager.INSTANCE.openContainer(new ContainerPlayerInventory(null, null));
@@ -41,7 +41,15 @@ public class PlayerController : MonoBehaviour
                     InventoryManager.INSTANCE.closeContainer(); 
                     isOpen = false; 
                 }
+      }
+      if (Input.GetKeyDown(KeyCode.Escape))
+      {
+            if (isOpen)
+            {
+                InventoryManager.INSTANCE.closeContainer();
+                isOpen = false;
             }
+      }
 
 
 
