@@ -4,15 +4,54 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    #region Singleton
+    public static InventoryManager INSTANCE;
+
+    private void Awake()
     {
-        
+        INSTANCE = this;
+    }
+    #endregion
+
+    public GameObject slotPrefab;
+    public List<ContainerGetter> containers = new List<ContainerGetter>();
+    private Container currentOpenContainer;
+
+    public GameObject getContainerPrefab(string name)
+    {
+        foreach (ContainerGetter container in containers)
+        {
+            if (container.containerName == name)
+            {
+                return container.containerPrefab;
+            }
+        }
+
+        return null;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void openContainer(Container container)
     {
-        
+        if (currentOpenContainer != null)
+        {
+            currentOpenContainer.closeContainer();
+        }
+
+        currentOpenContainer = container;
     }
+
+    public void closeContainer()
+    {
+        if (currentOpenContainer != null)
+        {
+            currentOpenContainer.closeContainer();
+        }
+    }
+}
+
+[System.Serializable]
+public class ContainerGetter
+{
+    public string containerName;
+    public GameObject containerPrefab;
 }
