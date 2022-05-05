@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e094a4aee548f240b6f38795613d4f9, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
-  ItemName: Axe
-  ItemIcon: {fileID: 21300000, guid: 76031195d8750544081eaf4839de7437, type: 3}
-  maxStackSize: 1
+  ItemName: Hammer
+  ItemIcon: {fileID: 21300000, guid: 9aebc56cb856f2a45a762c093d5da56d, type: 3}
+  maxStackSize: 30
