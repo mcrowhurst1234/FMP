@@ -6,7 +6,7 @@ public class ContainerPlayerInventory : Container
 {
     public ContainerPlayerInventory(Inventory containerInventory, Inventory playerInventory) : base (containerInventory, playerInventory)
     {
-
+        
     }
 
     public override GameObject getContainerPrefab()
