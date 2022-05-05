@@ -16,6 +16,8 @@ public class InventoryManager : MonoBehaviour
     public GameObject slotPrefab;
     public List<ContainerGetter> containers = new List<ContainerGetter>();
     private Container currentOpenContainer;
+    private ItemStack curDraggedStack = ItemStack.Empty;
+    private GameObject spawnedDragStack; 
 
     public GameObject getContainerPrefab(string name)
     {
