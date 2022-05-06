@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Container 
 {
+
+    private List<Slot> slots = new List<Slot>(); 
     private GameObject spawnedContainerPrefab;
     private Inventory containerInventory;
     private Inventory playerInventory; 
@@ -15,7 +17,28 @@ public class Container
         openContainer();
     } 
 
-   
+   public void addSlotToContainer(Inventory inventory, int slotID, float x, float y, int slotSize)
+   {
+        GameObject spawnedSlot = Object.Instantiate(InventoryManager.INSTANCE.slotPrefab);
+        Slot slot = spawnedSlot.GetComponent<Slot>();
+        RectTransform slotRT = slot.GetComponent<RectTransform>(); 
+        slot.setSlot(inventory, slotID, this);
+        spawnedSlot.transform.SetParent(spawnedContainerPrefab.transform);
+        spawnedSlot.transform.SetAsLastSibling();
+        slotRT.pivot = new Vector2(0, 1);
+        slotRT.anchoredPosition = new Vector2(x, y);
+        slotRT.sizeDelta = Vector2.one * slotSize;
+        slotRT.localScale = Vector3.one;
+        slots.Add(slot); 
+   }
+
+    public void updateSlots()
+    {
+        foreach(Slot slot in slots)
+        {
+            slot.updateSlot(); 
+        }
+    }
 
     public void openContainer()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-   #region Singleton
+    #region Singleton
     public static InventoryManager INSTANCE;
 
     private void Awake()
@@ -13,14 +13,17 @@ public class InventoryManager : MonoBehaviour
     }
     #endregion
 
+    public GameObject slotPrefab;
     public List<ContainerGetter> containers = new List<ContainerGetter>();
     private Container currentOpenContainer;
+    private ItemStack curDraggedStack = ItemStack.Empty;
+    private GameObject spawnedDragStack; 
 
     public GameObject getContainerPrefab(string name)
     {
-        foreach(ContainerGetter container in containers)
+        foreach (ContainerGetter container in containers)
         {
-            if(container.containerName == name)
+            if (container.containerName == name)
             {
                 return container.containerPrefab;
             }
@@ -31,7 +34,7 @@ public class InventoryManager : MonoBehaviour
 
     public void openContainer(Container container)
     {
-        if(currentOpenContainer != null)
+        if (currentOpenContainer != null)
         {
             currentOpenContainer.closeContainer();
         }
