@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class Slot : MonoBehaviour
+public class Slot : MonoBehaviour, IPointerDownHandler
 {
     public Image itemIcon;
     public Text itemAmount;
@@ -12,6 +12,7 @@ public class Slot : MonoBehaviour
     private Container attachedContainer;
     private InventoryManager inventoryManager;
 
+    
 
     public void setSlot(Inventory attachedInventory, int slotID, Container attachedContainer)
     {
@@ -43,5 +44,28 @@ public class Slot : MonoBehaviour
             itemIcon.enabled = false;
             itemAmount.text = string.Empty;
         }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if(eventData.pointerId == -1)
+        {
+            onLeftClick();
+        }
+
+        if(eventData.pointerId == -2)
+        {
+            onRightClick();
+        }
+    }
+
+
+    private void onLeftClick()
+    {
+
+    }
+    private void onRightClick()
+    {
+
     }
 }

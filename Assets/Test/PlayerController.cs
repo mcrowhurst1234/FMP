@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Item[] itemsToAdd;
+
+    private Inventory myInventory = new Inventory(20);
     Camera cam; 
     Rigidbody myRigidbody;
 
@@ -16,10 +19,18 @@ public class PlayerController : MonoBehaviour
 
     private bool isOpen;
 
+    private void Start()
+    {
+        foreach(Item item in itemsToAdd)
+        {
+            myInventory.addItem(new ItemStack(item, 1)); 
+        }
+    }
+
 
     
     // Start is called before the first frame update
-    void Start()
+    void start()
     {
         myRigidbody = GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
@@ -33,7 +44,7 @@ public class PlayerController : MonoBehaviour
       {
                 if(!isOpen)
                 {
-                    InventoryManager.INSTANCE.openContainer(new ContainerPlayerInventory(null, null));
+                    InventoryManager.INSTANCE.openContainer(new ContainerPlayerInventory(null, myInventory));
                     isOpen = true;
                 }
                 else 
