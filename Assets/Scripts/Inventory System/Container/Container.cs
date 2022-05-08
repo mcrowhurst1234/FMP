@@ -43,6 +43,7 @@ public class Container
     public void openContainer()
     {
         spawnedContainerPrefab = Object.Instantiate(getContainerPrefab(), InventoryManager.INSTANCE.transform);
+        spawnedContainerPrefab.transform.SetAsFirstSibling();
     }
 
     public void closeContainer()

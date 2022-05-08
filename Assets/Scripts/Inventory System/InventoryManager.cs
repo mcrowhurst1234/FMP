@@ -17,7 +17,13 @@ public class InventoryManager : MonoBehaviour
     public List<ContainerGetter> containers = new List<ContainerGetter>();
     private Container currentOpenContainer;
     private ItemStack curDraggedStack = ItemStack.Empty;
-    private GameObject spawnedDragStack; 
+    private GameObject spawnedDragStack;
+    private DraggedItemStack dragStack;
+
+    private void Start()
+    {
+        dragStack = GetComponentInChildren<DraggedItemStack>();
+    }
 
     public GameObject getContainerPrefab(string name)
     {
@@ -48,6 +54,16 @@ public class InventoryManager : MonoBehaviour
         {
             currentOpenContainer.closeContainer();
         }
+    }
+
+    public ItemStack getDraggedItemStack()
+    {
+        return curDraggedStack;
+    }
+
+    public void setDragedItemStack(ItemStack stackIn)
+    {
+        dragStack.setDraggedStack(curDraggedStack = stackIn);
     }
 }
 
